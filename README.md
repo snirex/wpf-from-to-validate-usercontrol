@@ -1,3 +1,2 @@
 # wpf-from-to-validate
-Validate that datepicker fields are convinient: 
-StartDate is smaller than EndDate
+validate that StartDate is smaller then EndDate
