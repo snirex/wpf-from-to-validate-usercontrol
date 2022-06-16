@@ -18,11 +18,18 @@ namespace WpfApp1
   {
     public object Convert(object[] values, Type targetType, object parmaeter, CultureIfo culture)
     {
-      if(values.LongLength >0 && values[0] != null && values[1] != null)
+      if(values.LongLength >0 && values[0] != null && values[1] != null && values[2] != null && values[3] != null)
       {
          DateTime startDate = (DateTime)values[0];
          DateTime endDate = (DateTime)values[1];
-         return startDate <= endDate ? Brushes.Transparent : Brushes.Red;
+         DateTime startTime = (DateTime)values[2]; // telerik time picker
+         DateTime endTime = (DateTime)values[3]; // telerik time picker
+         
+         //Join date + time
+         DateTime from = startDate.Add(startTime.TimeOfDay);
+         DateTime to = endDate.Add(endTime.TimeOfDay);
+         
+         return from <= to ? Brushes.Transparent : Brushes.Red;
       }
       return Brushes.Transparent;
     }
