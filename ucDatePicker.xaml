@@ -9,15 +9,19 @@
   <Border BorderThickness="1" HorizontalAlignment="Left">
     <Border.BorderBrush>
       <Binding Path="SelectedDate" elementName="fromDate" />
-      <Binding Path="SelectedDate" elementName="ToDate" />
+      <Binding Path="SelectedDate" elementName="ToDate" />      
+      <Binding Path="Value" elementName="fromTime" />
+      <Binding Path="Value" elementName="toTime" />
     </Border.BorderBrush>
   </Border>
   <StackPanel Orientation="Vertical">
     <StackPanel Orientation="Horizontal">
       <DatePicker x:Name="fromDate" />
+      <telerik:RadMaskedDateTimeInput x:Name="fromTime" Mask="HH:mm" />
     </StackPanel>
     <StackPanel Orientation="Horizontal">
       <DatePicker x:Name="toDate" />
+      <telerik:RadMaskedDateTimeInput x:Name="toTime" Mask="HH:mm" />
     </StackPanel>
   </StackPanel>
   </Border>
