@@ -1,0 +1,25 @@
+<UserControl x:Class="WpfApp1.ucDatePicker"
+...
+>
+<UserControl.Resources>
+  <localL:SnirConverter x:Key="SnirConverter" />
+</UserControl.Resources
+
+<StackPanel Orientation="Vertical">
+  <Border BorderThickness="1" HorizontalAlignment="Left">
+    <Border.BorderBrush>
+      <Binding Path="SelectedDate" elementName="fromDate" />
+      <Binding Path="SelectedDate" elementName="ToDate" />
+    </Border.BorderBrush>
+  </Border>
+  <StackPanel Orientation="Vertical">
+    <StackPanel Orientation="Horizontal">
+      <DatePicker x:Name="fromDate" />
+    </StackPanel>
+    <StackPanel Orientation="Horizontal">
+      <DatePicker x:Name="toDate" />
+    </StackPanel>
+  </StackPanel>
+  </Border>
+</StackPanel>
+</UserControl>
