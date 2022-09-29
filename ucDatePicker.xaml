@@ -1,29 +1,34 @@
 <UserControl x:Class="WpfApp1.ucDatePicker"
 ...
+   xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+   x:Name="rootDateTimeFromToFields" LostFocus="RootDateTimeFromToFields_LostFocus"
 >
 <UserControl.Resources>
-  <localL:SnirConverter x:Key="SnirConverter" />
+  <localL:SnirConverter x:Key="ValidateDateTimeConverter" />
 </UserControl.Resources
-
+<Grid>
 <StackPanel Orientation="Vertical">
   <Border BorderThickness="1" HorizontalAlignment="Left">
     <Border.BorderBrush>
-      <Binding Path="SelectedDate" elementName="fromDate" />
-      <Binding Path="SelectedDate" elementName="ToDate" />      
-      <Binding Path="Value" elementName="fromTime" />
-      <Binding Path="Value" elementName="toTime" />
+      <Binding Path="SelectedDate" ElementName="fromDate" />
+      <Binding Path="SelectedDate" ElementName="ToDate" />      
+      <Binding Path="Value" ElementName="fromTime" />
+      <Binding Path="Value" ElementName="toTime" />
     </Border.BorderBrush>
   </Border>
   <StackPanel Orientation="Vertical">
     <StackPanel Orientation="Horizontal">
-      <DatePicker x:Name="fromDate" />
-      <telerik:RadMaskedDateTimeInput x:Name="fromTime" Mask="HH:mm" />
+      <Label Content="From: " />
+      <DatePicker x:Name="fromDate" SelectedDateChanged="fromDate_SelectedDateChanged" />
+      <telerik:RadMaskedDateTimeInput x:Name="fromTime" Mask="HH:mm" ValueChanged="fromTime_ValueChanged" />
     </StackPanel>
     <StackPanel Orientation="Horizontal">
-      <DatePicker x:Name="toDate" />
-      <telerik:RadMaskedDateTimeInput x:Name="toTime" Mask="HH:mm" />
+      <Label Content="To: " />
+      <DatePicker x:Name="toDate" SelectedDateChanged="toDate_SelectedDateChanged" />
+      <telerik:RadMaskedDateTimeInput x:Name="toTime" Mask="HH:mm" ValueChanged="toTime_ValueChanged" />
     </StackPanel>
   </StackPanel>
   </Border>
 </StackPanel>
+</Grid>
 </UserControl>
