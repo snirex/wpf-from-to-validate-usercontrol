@@ -14,7 +14,7 @@ namespace WpfApp1
     }
   }
   
-  public class SnirConverter : IMultiValueConverter
+  public class ValidateDateTimeConverter : IMultiValueConverter
   {
     public object Convert(object[] values, Type targetType, object parmaeter, CultureIfo culture)
     {
@@ -26,12 +26,21 @@ namespace WpfApp1
          DateTime endTime = (DateTime)values[3]; // telerik time picker
          
          //Join date + time
-         DateTime from = startDate.Add(startTime.TimeOfDay);
-         DateTime to = endDate.Add(endTime.TimeOfDay);
+         var from = //startDate.Add(startTime.TimeOfDay);
+                    new DateTime(startDate.Year, startDate.Month, startDate.Day,
+                                 startTime.Hour, startTime.Minute, 0);
+         var to = //endDate.Add(endTime.TimeOfDay);
+                  new DateTime(endDate.Year, endDate.Month, endDate.Day,
+                                endTime.Hour, endTime.Minute, 0);
          
-         return from <= to ? Brushes.Transparent : Brushes.Red;
+         return Condition(from, to) ? Brushes.Transparent : Brushes.Red;
       }
       return Brushes.Transparent;
+    }
+    
+    private static bool Condition(DateTime startDate, DateTime endDate) 
+    { 
+       return startDate<= endDate; 
     }
     
     pulbic object[] Convertback(object value, Type[] targetType, object parmaeter, CultureIfo culture)
